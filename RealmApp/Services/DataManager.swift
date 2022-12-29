@@ -22,8 +22,10 @@ class DataManager {
                 "Movies List",
                 Date(),
                 [
-                    ["Avatar"],
-                    ["Titanic", "Must watch", Date(), true]
+                    ["Avatar", "Must watch", Date(), true],
+                    ["Titanic", "Must watch", Date(), true],
+                    ["SMTH", "Must watch", Date(), true],
+                    ["Unwatched", "Must watch", Date(), true],
                 ]
             ]
         )
