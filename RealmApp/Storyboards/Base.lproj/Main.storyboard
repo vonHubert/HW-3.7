@@ -61,6 +61,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Task Lists" id="ERy-3e-wHR"/>
+                    <connections>
+                        <outlet property="SortingSegmentedControl" destination="BwU-4V-6Nw" id="lLE-la-v9s"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ruz-0V-qZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

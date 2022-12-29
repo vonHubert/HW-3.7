@@ -11,6 +11,8 @@ import RealmSwift
 
 class TaskListViewController: UITableViewController {
 
+    @IBOutlet var SortingSegmentedControl: UISegmentedControl!
+    
     private var taskLists: Results<TaskList>!
     
     override func viewDidLoad() {
@@ -103,7 +105,11 @@ class TaskListViewController: UITableViewController {
     }
 
     @IBAction func sortingList(_ sender: UISegmentedControl) {
-        
+        switch SortingSegmentedControl.selectedSegmentIndex {
+        case 0: taskLists = taskLists!.sorted(byKeyPath: "date", ascending: false)
+        default: taskLists = taskLists!.sorted(byKeyPath: "name", ascending: false)
+        }
+        tableView.reloadData()
     }
     
     @objc private func  addButtonPressed() {
