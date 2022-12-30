@@ -54,6 +54,13 @@ class StorageManager {
             taskList.tasks.setValue(true, forKey: "isComplete")
         }
     }
+    
+    func done(_ task: Task) {
+        write {
+            task.setValue(true, forKey: "isComplete")
+        }
+    }
+    
 
     // MARK: - Tasks
     func save(_ task: String, withNote note: String, to taskList: TaskList, completion: (Task) -> Void) {

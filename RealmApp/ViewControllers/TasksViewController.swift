@@ -26,9 +26,7 @@ class TasksViewController: UITableViewController {
             action: #selector(addButtonPressed)
         )
         navigationItem.rightBarButtonItems = [addButton, editButtonItem]
-        
-        currentTasks = taskList.tasks.filter("isComplete = false")
-        completedTasks = taskList.tasks.filter("isComplete = true")
+        updateSections()
     }
     
     // MARK: - Table view data source
@@ -73,8 +71,9 @@ class TasksViewController: UITableViewController {
             isDone(true)
         }
         
-        let doneAction = UIContextualAction(style: .normal, title: "Done") { _, _, isDone in
-          //  StorageManager.shared.done(task)
+        let doneAction = UIContextualAction(style: .normal, title: "Done") { [self] _, _, isDone in
+            StorageManager.shared.done(task)
+            updateSections()
             tableView.reloadRows(at: [indexPath], with: .automatic)
             isDone(true)
         }
@@ -109,5 +108,10 @@ extension TasksViewController {
             let rowIndex = IndexPath(row: currentTasks.index(of: task) ?? 0, section: 0)
             tableView.insertRows(at: [rowIndex], with: .automatic)
         }
+    }
+    
+    private func updateSections() {
+        currentTasks = taskList.tasks.filter("isComplete = false")
+        completedTasks = taskList.tasks.filter("isComplete = true")
     }
 }
