@@ -37,6 +37,12 @@ class StorageManager {
         }
     }
     
+    func delete(_ task: Task) {
+        write {
+            realm.delete(task)
+        }
+    }
+    
     func edit(_ taskList: TaskList, newValue: String) {
         write {
             taskList.name = newValue
